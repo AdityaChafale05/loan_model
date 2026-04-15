@@ -1,0 +1,44 @@
+
+Correlation:
+Correlation measures how strongly two numeric columns move together.
+r = +1   →  perfect positive  (both increase together)
+r =  0   →  no relationship
+r = -1   →  perfect negative  (one increases, other decreases)
+
+
+Rule of thumb:
+| |r| range | Strength |
+|---|---|---|
+| 0.8 – 1.0 | Strong |
+| 0.5 – 0.8 | Moderate |
+| 0.3 – 0.5 | Weak |
+| 0.0 – 0.3 | Negligible |
+
+Step 1 — Compute Correlation python
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Only works on numeric columns
+corr = df.corr(numeric_only=True)
+print(corr.round(2))
+
+# Correlation Between Two Specific Columns
+df["ApplicantIncome"].corr(df["LoanAmount"])
+
+df.corr() uses Pearson by default — best for linear relationships.
+Use method='spearman' if data is skewed or has outliers.
+
+To convert into numeric value :
+df["Gender"] = df["Gender"].map({"Male":1, "Female":0})
+
+HeatMap :
+The Basic Syntax$$
+
+plt.imshow(X, cmap=None, interpolation=None, aspect=None)
+plt.colorbar()
+
+X: The data (array-like or PIL image).
+cmap: The colormap (e.g., 'viridis', 'magma').
+interpolation: How the "space" between pixels is handled.
+aspect: Controls the shape of the cells (pixels).
